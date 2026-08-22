@@ -34,3 +34,4 @@ jobs:
         with:
           tagName: v__VERSION__
           args: ${{ matrix.args }}
+          
