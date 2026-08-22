@@ -5,6 +5,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  ver: 0.0.0
+
 jobs:
   build:
     if: ${{ !contains(github.event.head_commit.message, '[skip]') }}
@@ -125,14 +128,19 @@ jobs:
           mv finals/nsis/*.exe final/
           ls -R final/
           cd final/
-          mv ukmcl_0.0.0_x64-setup.exe ukmcl-0.0.0_x64.exe
-          mv ukmcl_0.0.0_x64_en-US.msi ukmcl-0.0.0_x64.msi
-          mv ukmcl_0.0.0_amd64.deb ukmcl-0.0.0_x64.deb
-          mv ukmcl_0.0.0_amd64.AppImage ukmcl-0.0.0_x64.AppImage
-          mv ukmcl-0.0.0-1.x86_64.rpm ukmcl-0.0.0_x64.rpm
+          mv ukmcl_${{ env.ver }}_x64-setup.exe ukmcl-${{ env.ver }}_x64.exe
+          mv ukmcl_${{ env.ver }}_x64_en-US.msi ukmcl-${{ env.ver }}_x64.msi
+          mv ukmcl_${{ env.ver }}_amd64.deb ukmcl-${{ env.ver }}_x64.deb
+          mv ukmcl_${{ env.ver }}_amd64.AppImage ukmcl-${{ env.ver }}_x64.AppImage
+          mv ukmcl-${{ env.ver }}-1.x86_64.rpm ukmcl-${{ env.ver }}_x64.rpm
 
       - name: release them
         uses: softprops/action-gh-release@v3
         with:
+          name: UKMCL v${{ env.ver }}
+          tag_name: v${{ env.ver }}
+          body_path: ./changelog.md
+          generate_release_notes: true
+          prerelease: false
           files: |
             final/*.*
