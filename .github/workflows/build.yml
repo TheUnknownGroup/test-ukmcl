@@ -13,8 +13,10 @@ jobs:
         include:
           - platform: "macos-latest"
             args: "--target aarch64-apple-darwin"
+            up: "aarch64-apple-darwin"
           - platform: "macos-latest"
             args: "--target x86_64-apple-darwin"
+            up: "x86_64-apple-darwin"
           - platform: "ubuntu-latest"
             args: ""
           - platform: "windows-latest"
@@ -76,16 +78,22 @@ jobs:
             ${{ github.workspace }}/target/release/bundle/appimage/*.AppImage
 
       - name: release (macos)
-        if: ${{ matrix.platform == 'macos-latest' }}
+        if: ${{ matrix.platform == 'macos-latest' && matrix.up == 'aarch64-apple-darwin'}}
         uses: actions/upload-artifact@v7
         with:
-          name: dmg
+          name: dmg aarch
           path: |
-            ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/dmg/*.dmg
-            ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/macos/*.tar.gz
             ${{ github.workspace }}/target/aarch64-apple-darwin/release/bundle/dmg/*.dmg
             ${{ github.workspace }}/target/aarch64-apple-darwin/release/bundle/macos/*.tar.gz
             
+      - name: release (macos)
+        if: ${{ matrix.platform == 'macos-latest' && matrix.up == 'x86_64-apple-darwin'}}
+        uses: actions/upload-artifact@v7
+        with:
+          name: dmg x86
+          path: |
+            ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/dmg/*.dmg
+            ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/macos/*.tar.gz
 #  release:
 #    if: ${{ contains(github.event.head_commit.message, '[re]') }}
 #
@@ -100,6 +108,9 @@ jobs:
 #        with:
 #          path: finals
 #          merge-multiple: true
+#
+#      - run: |
+#          finals/
 #
 #      - name: release them
 #        uses: softprops/action-gh-release@v3
