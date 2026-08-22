@@ -14,6 +14,8 @@ jobs:
           - platform: "windows-latest"
             args: ""
     runs-on: ${{ matrix.platform }}
+    env:
+        working-directory: ./crates/frontend
     defaults:
       run:
         working-directory: ./crates/frontend
@@ -27,10 +29,8 @@ jobs:
         run: pnpm install
 
       - run: pwd
-
-      - run: echo "${{ env.working-directory }}"
       - uses: tauri-apps/tauri-action@v1
-        if: ${{ contains(github.event.head_commit.message, '[run_correct]' ) }}
+        # if: ${{ contains(github.event.head_commit.message, '[run_correct]' ) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
