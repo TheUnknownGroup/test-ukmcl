@@ -112,14 +112,15 @@ jobs:
         with:
           path: finals
           merge-multiple: true
-          
-      - run: |
-          mkdir -p final
-          cd sh
-          chmod +x ./move.sh
+      - run: ls -R finals/
+
+#      - run: |
+#          mkdir -p final
+#          cd ./sh
+#          chmod +x ./move.sh
 #          chmod +x ./rename.sh
-          cd ../
-          ./move.sh
+#          cd ../
+#          ./move.sh
 #
 #      - name: release them
 #        uses: softprops/action-gh-release@v3
