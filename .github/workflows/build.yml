@@ -129,7 +129,7 @@ jobs:
           mv ukmcl_0.0.0_x64_en-US.msi ukmcl-0.0.0_x64.msi
           mv ukmcl_0.0.0_amd64.deb ukmcl-0.0.0_x64.deb
           mv ukmcl_0.0.0_amd64.AppImage ukmcl-0.0.0_x64.AppImage
-          mv ukmcl_0.0.0-1.x86_64.rpm ukmcl-0.0.0_x64.rpm
+          mv ukmcl-0.0.0-1.x86_64.rpm ukmcl-0.0.0_x64.rpm
 
       - name: release them
         uses: softprops/action-gh-release@v3
