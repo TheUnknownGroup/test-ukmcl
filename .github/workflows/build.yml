@@ -24,6 +24,7 @@ jobs:
           runtime: node@lts
       - name: install frontend deps
         run: pnpm install
+        working-directory: ${{ env.working-directory }}
       - uses: tauri-apps/tauri-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
