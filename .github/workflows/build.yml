@@ -112,8 +112,6 @@ jobs:
         with:
           path: finals
           merge-multiple: true
-      - run: ls -R finals/
-
       - run: |
           mkdir -p final
           cd sh
