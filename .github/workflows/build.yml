@@ -14,8 +14,6 @@ jobs:
           - platform: "windows-latest"
             args: ""
     runs-on: ${{ matrix.platform }}
-    env:
-        working-directory: ./crates/frontend
     defaults:
       run:
         working-directory: ./crates/frontend
@@ -27,14 +25,14 @@ jobs:
           runtime: node@lts
       - name: install frontend deps
         run: pnpm install
-
-      - run: pwd
       - uses: tauri-apps/tauri-action@v1
-        # if: ${{ contains(github.event.head_commit.message, '[run_correct]' ) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: v__VERSION__
-          projectPath: ${{ env.working-directory }}
+          releaseName: 'UKMCL v__VERSION__'
+          releaseBody: 'Testing Windows Side'
+          releaseDraft: true
+          projectPath: ./crates/frontend
           tauriScript: "pnpm tauri"
           args: ${{ matrix.args }}
