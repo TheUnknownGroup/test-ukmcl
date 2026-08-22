@@ -116,16 +116,23 @@ jobs:
 
       - run: |
           mkdir -p final
-          cp finals/appimage/*.AppImage final/
-          cp finals/deb/*.deb final/
-          cp finals/rpm/*.rpm final/
-          cp finals/dmg/*.dmg final/
-          cp finals/macos/*.tar.gz final/
-          cp finals/msi/*.msi final/
-          cp finals/nsis/*.exe final/
-#
-#      - name: release them
-#        uses: softprops/action-gh-release@v3
-#        with:
-#          files: |
-#            finals/*.exe
+          mv finals/appimage/*.AppImage final/
+          mv finals/deb/*.deb final/
+          mv finals/rpm/*.rpm final/
+          mv finals/dmg/*.dmg final/
+          mv finals/macos/*.tar.gz final/
+          mv finals/msi/*.msi final/
+          mv finals/nsis/*.exe final/
+          ls -R final/
+          cd final/
+          mv ukmcl_0.0.0_x64-setup.exe ukmcl-0.0.0_x64.exe
+          mv ukmcl_0.0.0_x64_en-US.msi ukmcl-0.0.0_x64.msi
+          mv ukmcl_0.0.0_amd64.deb ukmcl-0.0.0_x64.deb
+          mv ukmcl_0.0.0_amd64.AppImage ukmcl-0.0.0_x64.AppImage
+          mv ukmcl_0.0.0-1.x86_64.rpm ukmcl-0.0.0_x64.rpm
+
+      - name: release them
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            final/*.*
