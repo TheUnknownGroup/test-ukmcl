@@ -24,9 +24,10 @@ jobs:
           version: 11
           runtime: node@lts
       - name: install frontend deps
-        shell: bash
         run: pnpm install
+
       - run: pwd
+        
       - uses: tauri-apps/tauri-action@v1
         if: ${{ contains(github.event.head_commit.message, '[run_correct]' ) }}
         env:
