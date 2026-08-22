@@ -114,15 +114,15 @@ jobs:
           merge-multiple: true
       - run: ls -R finals/
 
-#      - run: |
-#          mkdir -p final
-#          cp finals/appimage/*.AppImage final/
-#          cp finals/deb/*.deb final/
-#          cp finals/rpm/*.rpm final/
-#          cp finals/dmg/*.dmg final/
-#          cp finals/macos/*.tar.gz final/
-#          cp finals/msi/*.msi final/
-#          cp finals/nsis/*.exe final/
+      - run: |
+          mkdir -p final
+          cp finals/appimage/*.AppImage final/
+          cp finals/deb/*.deb final/
+          cp finals/rpm/*.rpm final/
+          cp finals/dmg/*.dmg final/
+          cp finals/macos/*.tar.gz final/
+          cp finals/msi/*.msi final/
+          cp finals/nsis/*.exe final/
 #
 #      - name: release them
 #        uses: softprops/action-gh-release@v3
