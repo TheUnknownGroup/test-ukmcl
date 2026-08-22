@@ -28,10 +28,10 @@ jobs:
 
       - run: pwd
       - uses: tauri-apps/tauri-action@v1
-        if: ${{ contains(github.event.head_commit.message, '[run_correct]' ) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: v__VERSION__
+          projectPath: ${{ env.working-directory }}
           tauriScript: "pnpm tauri"
           args: ${{ matrix.args }}
