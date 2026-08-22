@@ -25,6 +25,7 @@ jobs:
           runtime: node@lts
 
       - name: install frontend deps
+        shell: bash
         run: pnpm install
 
       - uses: tauri-apps/tauri-action@v1
