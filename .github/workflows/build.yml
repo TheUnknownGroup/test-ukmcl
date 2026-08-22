@@ -33,5 +33,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: v__VERSION__
+          tauriScript: "pnpm tauri"
           args: ${{ matrix.args }}
-          
