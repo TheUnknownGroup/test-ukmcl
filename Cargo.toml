@@ -1,0 +1,11 @@
+[package]
+name = "ukmcl"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = ["crates/frontend/src-tauri"]
+
+#[dependencies]
+#serde = "1"
+#serde_json = "1"

@@ -1,0 +1,41 @@
+name: test build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: ${{ !contains(github.event.head_commit.message, '[skip]') }}
+    strategy:
+      matrix:
+        include:
+          - platform: "windows-latest"
+            args: ""
+    runs-on: ${{ matrix.platform }}
+    defaults:
+      run:
+        working-directory: ./crates/frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/setup@v2
+        with:
+          version: 11
+          runtime: node@lts
+          cache: true
+
+      - name: install frontend deps
+        run: pnpm install
+
+      - uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: "App v__VERSION__"
+          releaseBody: "Testing purposes"
+          releaseDraft: true
+          prerelease: false
+          tauriScript: "pnpm tauri"
+          args: ${{ matrix.args }}

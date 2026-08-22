@@ -1,0 +1,60 @@
+:root {
+  position: relative;
+  min-height: 100vh;
+  font-family: "Alegreya", sans-serif;
+  font-size: 20px;
+  background-color: rgb(0, 0, 0);
+}
+
+:root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("./assets/images/background.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  filter: blur(3px);
+  z-index: -1;
+}
+
+body {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.header {
+  padding-left: 5px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.column {
+  padding-right: 10px;
+}
+
+.home {
+  /*padding-left: 10px;*/
+}
+
+.logo {
+  padding-top: 5px;
+}
+
+@font-face {
+  font-family: "Alata";
+  src: url('./assets/fonts/Alata/alata-regular.ttf');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Alegreya";
+  src: url('./assets/fonts/Alegreya/AlegreyaSans-Regular.otf');
+  font-style: normal;
+  font-weight: 400;
+}
