@@ -115,7 +115,7 @@ jobs:
       - run: ls -R finals/
 
       - run: |
-          mkdir final
+          mkdir -p final
           cd sh
           chmod +x ./move.sh
 #          chmod +x ./rename.sh
