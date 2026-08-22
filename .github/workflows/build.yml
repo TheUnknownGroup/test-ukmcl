@@ -94,23 +94,29 @@ jobs:
           path: |
             ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/dmg/*.dmg
             ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/macos/*.tar.gz
-#  release:
-#    if: ${{ contains(github.event.head_commit.message, '[re]') }}
-#
-#    needs: [ build ]
-#
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v7
-#
-#      - name: download
-#        uses: actions/download-artifact@v8
-#        with:
-#          path: finals
-#          merge-multiple: true
+  release:
+    if: ${{ contains(github.event.head_commit.message, '[re]') }}
+
+    needs: [ build ]
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: download
+        uses: actions/download-artifact@v8
+        with:
+          path: finals
+          merge-multiple: true
+      - run: ls -R finals/
 #
 #      - run: |
-#          finals/
+#          mkdir final
+#          cp finals/appimage/*.AppImage final/
+#          cp finals/deb/*.deb final/
+#          cp finals/appimage/*.AppImage final/
+#          cp finals/appimage/*.AppImage final/
+#          cp finals/appimage/*.AppImage final/
 #
 #      - name: release them
 #        uses: softprops/action-gh-release@v3
