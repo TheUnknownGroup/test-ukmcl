@@ -64,6 +64,7 @@ jobs:
           path: | 
             ${{ github.workspace }}/target/release/bundle/nsis/*.exe
             ${{ github.workspace }}/target/release/bundle/msi/*.msi
+
       - name: release (ubuntu)
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         uses: actions/upload-artifact@v7
@@ -73,11 +74,35 @@ jobs:
             ${{ github.workspace }}/target/release/bundle/deb/*.deb
             ${{ github.workspace }}/target/release/bundle/rpm/*.rpm
             ${{ github.workspace }}/target/release/bundle/appimage/*.AppImage
-#      - name: release (macos)
-#        if: ${{ matrix.platform == 'macos-latest' }}
-#        uses: actions/upload-artifact@v7
+
+      - name: release (macos)
+        if: ${{ matrix.platform == 'macos-latest' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: dmg
+          path: |
+            ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/dmg/*.dmg
+            ${{ github.workspace }}/target/x86_64-apple-darwin/release/bundle/macos/*.tar.gz
+            ${{ github.workspace }}/target/aarch64-apple-darwin/release/bundle/dmg/*.dmg
+            ${{ github.workspace }}/target/aarch64-apple-darwin/release/bundle/macos/*.tar.gz
+            
+#  release:
+#    if: ${{ contains(github.event.head_commit.message, '[re]') }}
+#
+#    needs: [ build ]
+#
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v7
+#
+#      - name: download
+#        uses: actions/download-artifact@v8
 #        with:
-#          name: app
-#          path: |
-#            ${{ github.workspace }}/target/release/bundle/nsis/*.exe
-#            ${{ github.workspace }}/target/release/bundle/msi/*.msi
+#          path: finals
+#          merge-multiple: true
+#
+#      - name: release them
+#        uses: softprops/action-gh-release@v3
+#        with:
+#          files: |
+#            finals/*.exe
