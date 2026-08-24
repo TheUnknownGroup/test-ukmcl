@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "identifier": "ukcml",
   "build": {
-    "frontendDist": "../src"
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:4321/",
+    "beforeDevCommand": "bun astro dev",
+    "beforeBuildCommand": "bun astro build"
   },
   "app": {
     "withGlobalTauri": true,

@@ -10,7 +10,7 @@
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("./assets/images/background.jpg");
+  background-image: url("/assets/images/background.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   opacity: 0.7;
@@ -24,37 +24,47 @@ body {
   margin: 0;
 }
 
-.header {
-  padding-left: 5px;
+#background {
+  height: 99.270826vh;
+  background-color: rgb(0 0 0 / 0.3);
+  border: 2px solid;
+  border-color: transparent black transparent transparent;
+  width: 55px;
+}
+
+#column {
+
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.pages {
+  color: white
 }
 
 .row {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
 }
 
-.column {
-  padding-right: 10px;
-}
-
-.home {
-  /*padding-left: 10px;*/
-}
-
-.logo {
+#logoA {
   padding-top: 5px;
 }
 
 @font-face {
   font-family: "Alata";
-  src: url('./assets/fonts/Alata/alata-regular.ttf');
+  src: url('/assets/fonts/Alata/alata-regular.ttf');
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Alegreya";
-  src: url('./assets/fonts/Alegreya/AlegreyaSans-Regular.otf');
+  src: url('/assets/fonts/Alegreya/AlegreyaSans-Regular.otf');
   font-style: normal;
   font-weight: 400;
 }

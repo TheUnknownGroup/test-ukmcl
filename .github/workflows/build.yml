@@ -30,11 +30,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: setup pnpm
-        uses: pnpm/setup@v2
+      - name: setup bun
+        uses: oven-sh/setup-bun@v2
         with:
-          version: 11
-          runtime: node@lts
+          bun-version: latest
 
       - name: rust stable
         uses: dtolnay/rust-toolchain@master
@@ -49,7 +48,7 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf xdg-utils
 
       - name: install frontend deps
-        run: pnpm install
+        run: bun install
         working-directory: ${{ env.working-directory }}
 
       - name: tauri build
@@ -58,7 +57,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           projectPath: ${{ env.working-directory }}
-          tauriScript: "pnpm tauri"
+          tauriScript: "bun tauri"
           args: ${{ matrix.args }}
 
       - name: release (windows)
@@ -67,7 +66,7 @@ jobs:
         with:
           name: exe
           retention-days: 3
-          path: | 
+          path: |
             ${{ github.workspace }}/target/release/bundle/nsis/*.exe
             ${{ github.workspace }}/target/release/bundle/msi/*.msi
 
@@ -91,7 +90,7 @@ jobs:
           path: |
             ${{ github.workspace }}/target/aarch64-apple-darwin/release/bundle/dmg/*.dmg
             ${{ github.workspace }}/target/aarch64-apple-darwin/release/bundle/macos/*.tar.gz
-            
+
       - name: release (macos)
         if: ${{ matrix.platform == 'macos-latest' && matrix.up == 'x86_64-apple-darwin'}}
         uses: actions/upload-artifact@v7
