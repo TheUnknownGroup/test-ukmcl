@@ -30,3 +30,7 @@ target/
 .astro/
 hide/
 .gitignore
+
+/gen/schemas
+
+sites.txt

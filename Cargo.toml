@@ -1,11 +1,10 @@
-[package]
-name = "ukmcl"
-version = "0.0.0"
-edition = "2021"
-
 [workspace]
-members = ["crates/frontend/src-tauri"]
+members = [
+    "frontend/src-tauri",
+    "crates/java",
+    "crates/auth",
+    "crates/acore"
+]
 
-#[dependencies]
-#serde = "1"
-#serde_json = "1"
+default-members = ["frontend/src-tauri"]
+resolver = "1"

@@ -24,34 +24,54 @@ body {
   margin: 0;
 }
 
+.app {
+  display: flex;
+}
+
+.row {
+  padding-bottom: 5px;
+}
+
 #background {
   height: 99.270826vh;
   background-color: rgb(0 0 0 / 0.3);
   border: 2px solid;
   border-color: transparent black transparent transparent;
   width: 55px;
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1;
+  overflow: auto;
 }
 
 #column {
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.pages {
-  color: white
-}
-
-.row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
-#logoA {
-  padding-top: 5px;
+.user {
+  border: none;
+  border-radius: 5px;
+  background-color: gray;
+  font-size: 15px;
+  padding: 6px;
+  color: white;
+}
+
+.text {
+  background-color: grey;
+  border: none;
+  font-size: 15px;
+  padding: 6px;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-right: 10px;
+  color: white;
 }
 
 @font-face {

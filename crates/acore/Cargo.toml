@@ -1,0 +1,10 @@
+[package]
+name = "acore"
+version = "0.0.0"
+description = "Essential Core of the Project"
+authors = ["devonk15"]
+edition = "2024"
+
+[dependencies]
+dirs = "6"
+tokio = { version = "1", features = ["full"] }
