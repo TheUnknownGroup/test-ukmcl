@@ -1,6 +1,9 @@
 ---
 import "../styles.css";
+import "../popup.css";
+import "../inst.css";
 import SidePanelInst from "../components/SidePanelInst.astro";
+import ConfirmDeletePopUp from "../components/ConfirmDeletePopUp.astro";
 ---
 
 <!DOCTYPE html>
@@ -12,6 +15,7 @@ import SidePanelInst from "../components/SidePanelInst.astro";
     </head>
     <body>
         <SidePanelInst />
+        <ConfirmDeletePopUp />
         <script src="/src/js/main.js"></script>
         <script src="/src/js/java.js"></script>
     </body>

@@ -7,3 +7,5 @@ logo_btn.target = "_blank";
 
 const inst_btn = document.getElementById("instances");
 inst_btn.href = "/instances"
+
+window.view

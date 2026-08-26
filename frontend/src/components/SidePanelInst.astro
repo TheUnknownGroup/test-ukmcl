@@ -1,6 +1,10 @@
+---
+import InstanceList from "./InstanceList.astro";
+---
+
 <div class="app">
     <div id="background">
-        <div id="column">
+         <div id="column">
             <div class="row">
                 <a id="logo">
                     <img src="/assets/images/icon.png" width="45" alt="Unknown Logo">
@@ -28,5 +32,6 @@
             <input type="text" id="instance" placeholder="Instance" required>
             <button type="submit">Create</button>
         </form>
+        <InstanceList />
     </div>
 </div>
