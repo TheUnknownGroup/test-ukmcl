@@ -134,8 +134,8 @@ jobs:
           mv ukmcl_${{ env.ver }}_amd64.deb ukmcl-${{ env.ver }}-linux_x64.deb
           mv ukmcl_${{ env.ver }}_amd64.AppImage ukmcl-${{ env.ver }}-linux_x64.AppImage
           mv ukmcl-${{ env.ver }}-1.x86_64.rpm ukmcl-${{ env.ver }}-redhat_x64.rpm
-          mv ukmcl_${{ env.ver }}_aarch64.dmg ukmcl-${{ env.var }}-macos_arm64.dmg
-          mv ukmcl_${{ env.ver }}_x64.dmg ukmcl-${{ env.var }}-macos_x64.dmg
+          mv ukmcl_${{ env.ver }}_aarch64.dmg ukmcl-${{ env.ver }}-macos_arm64.dmg
+          mv ukmcl_${{ env.ver }}_x64.dmg ukmcl-${{ env.ver }}-macos_x64.dmg
 
       - name: release them
         uses: softprops/action-gh-release@v3
