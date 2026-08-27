@@ -25,7 +25,7 @@ dist-ssr
 
 target/
 
-*.sh
+build.sh
 
 .astro/
 hide/
@@ -36,3 +36,5 @@ hide/
 sites.txt
 
 .zed/
+
+get/

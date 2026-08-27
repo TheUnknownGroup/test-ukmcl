@@ -3,7 +3,8 @@ members = [
     "frontend/src-tauri",
     "crates/java",
     "crates/auth",
-    "crates/acore"
+    "crates/acore",
+    # "crates/get"
 ]
 
 default-members = ["frontend/src-tauri"]

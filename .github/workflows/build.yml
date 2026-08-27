@@ -1,4 +1,4 @@
-name: test build [re]
+name: test build
 on:
   push:
     branches:
